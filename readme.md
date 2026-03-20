@@ -1,8 +1,8 @@
-🚀 Jet Classification using Graph Neural Networks
+# Graph Neural Networks for Jet Classification (ML4SCI GSoC Task)
 
-This project explores graph-based representations for particle physics jet classification. We convert calorimeter images into particle-level point clouds and construct graphs to classify jets as quark or gluon using Graph Neural Networks.
+This project explores graph-based representations of particle physics jet events using Graph Neural Networks (GNNs).
 
-📌 Overview
+# Overview
 
 Input: Multi-channel jet images (ECAL, HCAL, Tracks)
 
@@ -54,28 +54,35 @@ Epochs: 30
 
 Batch size: 32
 
-📊 Results
-Model	Graph	Accuracy
-GAT	kNN	0.6839
-EdgeConv	kNN	0.6849
-📈 Observations
 
-Both models converge within 15–20 epochs
+## Future Work
 
-EdgeConv slightly outperforms GAT
+- Train on combined dataset (all runs)
+- Explore dynamic graph construction
+- Experiment with hybrid GNN architectures
+- Incorporate physics-informed constraints
 
-Graph-based representations effectively capture jet structure
+## Experiments
 
-🚧 Future Work
+We evaluate models across three independent dataset splits:
 
-Explore dynamic graph construction
+| Dataset | GAT Acc | Edge Acc | GAT AUC | Edge AUC |
+|--------|--------|---------|--------|---------|
+| Run0   | 0.684 | 0.685 | 0.749    | 0.738     |
+| Run1   | 0.696  | 0.695  | 0.753  | 0.750   |
+| Run2   | 0.6946 | 0.6943 | 0.7498 | 0.7432  |
 
-Experiment with different k values
 
-Incorporate additional physics-inspired features
+## Key Insights
 
-Try deeper architectures
+- No single model consistently outperforms across all dataset splits
+- EdgeConv performs better when local geometric structure dominates
+- GAT performs better when adaptive interaction weighting is beneficial
 
-🧠 Conclusion
+This suggests that both models capture complementary aspects of jet structure.
 
-Graph Neural Networks provide an effective framework for jet classification by leveraging particle-level relationships. EdgeConv shows a slight advantage due to its ability to model local geometric interactions.
+The variability across runs highlights the importance of robust evaluation in scientific machine learning.
+
+## Conclusion
+
+This work demonstrates the effectiveness of graph-based approaches for particle physics and highlights the importance of model evaluation across multiple data distributions.
